@@ -3,14 +3,19 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
     <!--1、配置bean-->
+    <!--使用构造方法实例化对象-->
     <bean id="bookdao" class="com.ldy.dao.imp.BookDaoImp"/>
-    <bean id="bookservice" class="com.ldy.service.imp.BookServiceImp">
+    <!--scope="singleton"是单例，scope="prototype"是非单例-->
+    <bean id="bookservice" class="com.ldy.service.imp.BookServiceImp" scope="prototype">
         <!--配置bookdao和bookservice的关系，将bookdao放入到bookservice中
         name bd是指BookServiceImp中的BookDao  bd属性,如此一来，BookServiceImp中也必须是自动生成的setBd(生成方法不能改变)
         ref  bookdao是指本配置文件中id为bookdao的bean
         -->
         <property name="bd" ref="bookdao"></property>
     </bean>
+
+    <!--使用工厂实例化对象-->
+    <bean id="userDao" class="com.ldy.factoryBean.UserDaoFactoryBean"/>
 
 
 </beans>

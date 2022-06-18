@@ -1,3 +1,5 @@
+package com.ldy;
+
 import com.ldy.service.BookService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
